@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>عالم نوف للمكياج | Nouf Collection</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #fff0f6;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff4d8d, #ff85a2);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 46px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      opacity: 0.95;
+      font-size: 18px;
+    }
+
+    .products {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .products h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: #ff4d8d;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      color: #ff4d8d;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background: #ff4d8d;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: 0.25s;
+    }
+
+    .btn:hover {
+      background: #e63e7c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #111;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>عالم نوف للمكياج</h1>
+    <p>Nouf Collection — جمالك يبدأ من هنا ✨</p>
+  </header>
+
+  <section class="products">
+    <h2>منتجات نوف كولكشن</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600" alt="">
+        <h3>أحمر شفاه فاخر</h3>
+        <div class="price">75 ريال</div>
+        <a class="btn" href="#">اطلبي الآن</a>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600" alt="">
+        <h3>فاونديشن ناعم</h3>
+        <div class="price">120 ريال</div>
+        <a class="btn" href="#">اطلبي الآن</a>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600" alt="">
+        <h3>باليت ظلال العيون</h3>
+        <div class="price">150 ريال</div>
+        <a class="btn" href="#">اطلبي الآن</a>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1583241800698-38a2c32d2c9c?w=600" alt="">
+        <h3>ماسكارا كثيفة</h3>
+        <div class="price">65 ريال</div>
+        <a class="btn" href="#">اطلبي الآن</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 عالم نوف للمكياج — Nouf Collection
+  </footer>
+
+</body>
+</html>
