@@ -8,12 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;scroll-behavior:smooth;}
 
-body{
-background:#ffe3ef;
-color:#333;
-}
+body{background:#ffe3ef;color:#333;transition:.3s}
 
 /* ===== Header ===== */
 header{
@@ -32,41 +29,25 @@ font-weight:700;
 color:#444;
 }
 
-.logo span{
-color:#e91e63;
+.logo span{color:#e91e63;}
+
+.lang-btn{
+position:absolute;
+left:20px;
+top:18px;
+background:#444;
+color:white;
+border:none;
+padding:6px 14px;
+border-radius:20px;
+cursor:pointer;
+font-size:13px;
 }
 
 /* ===== Hero ===== */
 .hero{
-height:380px;
+height:360px;
 background:url('https://images.unsplash.com/photo-1632345031435-8727f6897d53') center/cover;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
-
-.hero::after{
-content:'';
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.35);
-}
-
-.hero-content{
-position:relative;
-color:white;
-text-align:center;
-}
-
-.hero-content h1{
-font-size:32px;
-margin-bottom:10px;
-}
-
-.hero-content p{
-font-size:16px;
 }
 
 /* ===== Products ===== */
@@ -87,9 +68,7 @@ box-shadow:0 8px 25px rgba(0,0,0,.08);
 transition:.3s;
 }
 
-.card:hover{
-transform:translateY(-8px);
-}
+.card:hover{transform:translateY(-8px);}
 
 .card img{
 width:100%;
@@ -97,19 +76,24 @@ height:230px;
 object-fit:cover;
 }
 
-.card-body{
-padding:20px;
-text-align:center;
-}
+.card-body{padding:18px;text-align:center;}
 
-.card h3{
-margin-bottom:8px;
+.desc{
+font-size:13px;
+color:#777;
+margin:6px 0 10px;
 }
 
 .price{
 color:#e91e63;
 font-weight:700;
-margin-bottom:12px;
+margin-bottom:10px;
+}
+
+.qty{
+width:80px;
+padding:6px;
+margin-bottom:10px;
 }
 
 .btn{
@@ -124,17 +108,18 @@ cursor:pointer;
 /* ===== Checkout ===== */
 .checkout{
 display:none;
-max-width:400px;
+max-width:420px;
 margin:40px auto;
 background:white;
 padding:30px;
 border-radius:20px;
 box-shadow:0 10px 30px rgba(0,0,0,.1);
+animation:fade .4s ease;
 }
 
-.checkout h2{
-margin-bottom:20px;
-text-align:center;
+@keyframes fade{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
 }
 
 .checkout input{
@@ -152,100 +137,133 @@ margin:10px 0;
 text-align:center;
 }
 
-.success{
+.invoice{
 display:none;
-background:#e8ffe8;
-color:#1b7a1b;
-padding:10px;
-border-radius:10px;
-text-align:center;
-margin-top:10px;
+background:#f7f7f7;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
+font-size:14px;
 }
 
-.error{
-color:red;
-text-align:center;
-margin-top:10px;
-}
-
-.whatsapp{
-margin-top:12px;
-background:#25D366;
-}
+.error{color:red;text-align:center;margin-top:8px;}
 </style>
 </head>
 
 <body>
 
 <header>
+<button class="lang-btn" onclick="toggleLang()">EN</button>
 <div class="logo">Double N <span>Beauty</span></div>
 </header>
 
-<section class="hero">
-<div class="hero-content">
-<h1>أظافر زجاجية فاخرة</h1>
-<p>أناقة – نعومة – لمسة احترافية</p>
-</div>
-</section>
+<section class="hero"></section>
 
 <section class="products" id="products">
 
+<!-- المنتج A -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371">
 <div class="card-body">
-<h3>اظافر A</h3>
+<h3 class="t-nameA">اظافر A</h3>
+<div class="desc t-desc">ناعم • قوي • عصري • سعر منافس</div>
 <div class="price">35 ريال</div>
-<button class="btn" onclick="orderProduct('اظافر A - 35 ريال')">اطلب الآن</button>
+<select class="qty" id="qtyA">
+<option value="1">1</option>
+<option value="5">5</option>
+<option value="10">10</option>
+</select><br>
+<button class="btn" onclick="orderProduct('اظافر A',35,'qtyA')">اطلب</button>
 </div>
 </div>
 
+<!-- المنتج B -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66">
 <div class="card-body">
-<h3>اظافر B</h3>
+<h3 class="t-nameB">اظافر B</h3>
+<div class="desc t-desc">ناعم • قوي • عصري • سعر منافس</div>
 <div class="price">40 ريال</div>
-<button class="btn" onclick="orderProduct('اظافر B - 40 ريال')">اطلب الآن</button>
+<select class="qty" id="qtyB">
+<option value="1">1</option>
+<option value="5">5</option>
+<option value="10">10</option>
+</select><br>
+<button class="btn" onclick="orderProduct('اظافر B',40,'qtyB')">اطلب</button>
 </div>
 </div>
 
+<!-- المنتج C -->
 <div class="card">
 <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc">
 <div class="card-body">
-<h3>اظافر C</h3>
+<h3 class="t-nameC">اظافر C</h3>
+<div class="desc t-desc">ناعم • قوي • عصري • سعر منافس</div>
 <div class="price">45 ريال</div>
-<button class="btn" onclick="orderProduct('اظافر C - 45 ريال')">اطلب الآن</button>
+<select class="qty" id="qtyC">
+<option value="1">1</option>
+<option value="5">5</option>
+<option value="10">10</option>
+</select><br>
+<button class="btn" onclick="orderProduct('اظافر C',45,'qtyC')">اطلب</button>
 </div>
 </div>
 
 </section>
 
+<!-- Checkout -->
 <div class="checkout" id="checkout">
-<h2>إتمام الطلب</h2>
+<h2 id="t-checkout">إتمام الطلب</h2>
 
 <input type="text" id="selectedProduct" readonly>
-
 <input type="text" id="city" placeholder="المدينة">
 <input type="tel" id="phone" placeholder="رقم الجوال">
 <input type="text" id="location" placeholder="الموقع بالتفصيل">
 
-<p class="note">الدفع عند الاستلام — متاح داخل الرياض فقط</p>
+<p class="note" id="t-note">الدفع عند الاستلام — داخل الرياض فقط</p>
 
-<button class="btn" onclick="submitOrder()">تأكيد الطلب</button>
-<button class="btn whatsapp" onclick="sendWhatsApp()">إرسال عبر واتساب</button>
-
-<div class="success" id="successMsg">
-✅ تم تأكيد طلبك بنجاح — سيتم التواصل معك قريباً
-</div>
+<button class="btn" onclick="submitOrder()" id="t-confirm">تأكيد الطلب</button>
 
 <div class="error" id="errorMsg"></div>
+
+<div class="invoice" id="invoice"></div>
 </div>
 
 <script>
-let productName="";
+let currentLang="ar";
+let orderData={};
 
-function orderProduct(name){
-productName=name;
-document.getElementById("selectedProduct").value=name;
+function toggleLang(){
+currentLang=currentLang==="ar"?"en":"ar";
+document.documentElement.lang=currentLang;
+document.documentElement.dir=currentLang==="ar"?"rtl":"ltr";
+
+document.querySelector(".lang-btn").innerText=currentLang==="ar"?"EN":"AR";
+
+if(currentLang==="en"){
+document.querySelectorAll(".t-desc").forEach(e=>e.innerText="Soft • Strong • Modern • Competitive price");
+document.querySelector(".t-nameA").innerText="Nails A";
+document.querySelector(".t-nameB").innerText="Nails B";
+document.querySelector(".t-nameC").innerText="Nails C";
+document.getElementById("t-checkout").innerText="Checkout";
+document.getElementById("t-note").innerText="Cash on delivery — Riyadh only";
+document.getElementById("t-confirm").innerText="Confirm Order";
+}else{
+document.querySelectorAll(".t-desc").forEach(e=>e.innerText="ناعم • قوي • عصري • سعر منافس");
+document.querySelector(".t-nameA").innerText="اظافر A";
+document.querySelector(".t-nameB").innerText="اظافر B";
+document.querySelector(".t-nameC").innerText="اظافر C";
+document.getElementById("t-checkout").innerText="إتمام الطلب";
+document.getElementById("t-note").innerText="الدفع عند الاستلام — داخل الرياض فقط";
+document.getElementById("t-confirm").innerText="تأكيد الطلب";
+}
+}
+
+function orderProduct(name,price,qtyId){
+let qty=document.getElementById(qtyId).value;
+orderData={name,price,qty,total:price*qty};
+
+document.getElementById("selectedProduct").value=`${name} × ${qty}`;
 document.getElementById("products").style.display="none";
 document.getElementById("checkout").style.display="block";
 window.scrollTo(0,0);
@@ -253,31 +271,27 @@ window.scrollTo(0,0);
 
 function submitOrder(){
 let city=document.getElementById("city").value.trim().toLowerCase();
-let success=document.getElementById("successMsg");
 let error=document.getElementById("errorMsg");
+let invoice=document.getElementById("invoice");
 
-success.style.display="none";
 error.innerText="";
+invoice.style.display="none";
 
 if(city!=="الرياض" && city!=="riyadh"){
-error.innerText="الخدمة متاحة داخل الرياض فقط";
-}else{
-success.style.display="block";
-}
+error.innerText=currentLang==="ar"?"الخدمة داخل الرياض فقط":"Riyadh only";
+return;
 }
 
-function sendWhatsApp(){
-let phone=document.getElementById("phone").value;
-let city=document.getElementById("city").value;
-let location=document.getElementById("location").value;
-
-let message=`طلب جديد:
-${productName}
-المدينة: ${city}
-الجوال: ${phone}
-الموقع: ${location}`;
-
-window.open(`https://wa.me/966XXXXXXXXX?text=${encodeURIComponent(message)}`);
+invoice.style.display="block";
+invoice.innerHTML=currentLang==="ar"
+?`<b>تم تأكيد الطلب ✅</b><br><br>
+المنتج: ${orderData.name}<br>
+الكمية: ${orderData.qty}<br>
+الإجمالي: ${orderData.total} ريال`
+:`<b>Order Confirmed ✅</b><br><br>
+Product: ${orderData.name}<br>
+Qty: ${orderData.qty}<br>
+Total: ${orderData.total} SAR`;
 }
 </script>
 
