@@ -3,211 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Double N</title>
+<title>Double N Beauty</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;}
+
 body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:#ffd6e7;
+background:#ffe3ef;
+color:#333;
 }
 
-/* ===== اللوقو ===== */
-.header{
-  text-align:center;
-  padding:20px;
+/* ===== Header ===== */
+header{
+background:white;
+padding:18px 0;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,.05);
+position:sticky;
+top:0;
+z-index:100;
 }
 
 .logo{
-  font-size:34px;
-  font-weight:bold;
-  color:#555;
-  background:#ffc0cb;
-  display:inline-block;
-  padding:12px 30px;
-  border-radius:25px;
-  box-shadow:0 4px 12px rgba(0,0,0,.08);
+font-size:28px;
+font-weight:700;
+color:#444;
 }
 
-/* ===== الهيرو ===== */
+.logo span{
+color:#e91e63;
+}
+
+/* ===== Hero ===== */
 .hero{
-  height:320px;
-  background:url('https://images.unsplash.com/photo-1632345031435-8727f6897d53') center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
+height:380px;
+background:url('https://images.unsplash.com/photo-1632345031435-8727f6897d53') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
 }
 
-.hero h1{
-  background:rgba(0,0,0,.35);
-  padding:16px 28px;
-  border-radius:14px;
-  font-size:28px;
+.hero::after{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.35);
 }
 
-/* ===== المنتجات ===== */
+.hero-content{
+position:relative;
+color:white;
+text-align:center;
+}
+
+.hero-content h1{
+font-size:32px;
+margin-bottom:10px;
+}
+
+.hero-content p{
+font-size:16px;
+}
+
+/* ===== Products ===== */
 .products{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  padding:40px;
-  flex-wrap:wrap;
+padding:60px 20px;
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
 }
 
 .card{
-  background:white;
-  width:230px;
-  padding:15px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-  transition:.25s;
+background:white;
+width:260px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+transition:.3s;
 }
 
 .card:hover{
-  transform:translateY(-6px);
+transform:translateY(-8px);
 }
 
 .card img{
-  width:100%;
-  border-radius:12px;
+width:100%;
+height:230px;
+object-fit:cover;
 }
 
-button{
-  background:#555;
-  color:white;
-  border:none;
-  padding:11px 22px;
-  border-radius:12px;
-  cursor:pointer;
-  font-size:15px;
+.card-body{
+padding:20px;
+text-align:center;
 }
 
-/* ===== صفحة الدفع ===== */
+.card h3{
+margin-bottom:8px;
+}
+
+.price{
+color:#e91e63;
+font-weight:700;
+margin-bottom:12px;
+}
+
+.btn{
+background:#444;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:30px;
+cursor:pointer;
+}
+
+/* ===== Checkout ===== */
 .checkout{
-  display:none;
-  background:white;
-  width:340px;
-  margin:50px auto;
-  padding:30px 25px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,.12);
+display:none;
+max-width:400px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
 }
 
 .checkout h2{
-  margin-bottom:15px;
-  color:#333;
+margin-bottom:20px;
+text-align:center;
 }
 
 .checkout input{
-  width:92%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:10px;
-  border:1px solid #ddd;
-  font-size:14px;
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid #ddd;
+border-radius:10px;
 }
 
 .note{
-  color:#666;
-  font-size:13px;
-  margin:10px 0 15px;
+font-size:13px;
+color:#666;
+margin:10px 0;
+text-align:center;
 }
 
 .success{
-  background:#e8ffe8;
-  color:#1b7a1b;
-  padding:10px;
-  border-radius:10px;
-  margin-top:12px;
-  display:none;
-  font-weight:bold;
+display:none;
+background:#e8ffe8;
+color:#1b7a1b;
+padding:10px;
+border-radius:10px;
+text-align:center;
+margin-top:10px;
 }
 
 .error{
-  color:red;
-  margin-top:10px;
-  font-size:14px;
+color:red;
+text-align:center;
+margin-top:10px;
+}
+
+.whatsapp{
+margin-top:12px;
+background:#25D366;
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="logo">Double N</div>
+<header>
+<div class="logo">Double N <span>Beauty</span></div>
 </header>
 
 <section class="hero">
-  <h1>أظافر نسائية مميزة</h1>
+<div class="hero-content">
+<h1>أظافر زجاجية فاخرة</h1>
+<p>أناقة – نعومة – لمسة احترافية</p>
+</div>
 </section>
 
 <section class="products" id="products">
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371">
-    <h3>اظافر A</h3>
-    <p>35 ريال</p>
-    <button onclick="showCheckout()">اطلب الآن</button>
-  </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371">
+<div class="card-body">
+<h3>اظافر A</h3>
+<div class="price">35 ريال</div>
+<button class="btn" onclick="orderProduct('اظافر A - 35 ريال')">اطلب الآن</button>
+</div>
+</div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66">
-    <h3>اظافر B</h3>
-    <p>40 ريال</p>
-    <button onclick="showCheckout()">اطلب الآن</button>
-  </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66">
+<div class="card-body">
+<h3>اظافر B</h3>
+<div class="price">40 ريال</div>
+<button class="btn" onclick="orderProduct('اظافر B - 40 ريال')">اطلب الآن</button>
+</div>
+</div>
 
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc">
-    <h3>اظافر C</h3>
-    <p>45 ريال</p>
-    <button onclick="showCheckout()">اطلب الآن</button>
-  </div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc">
+<div class="card-body">
+<h3>اظافر C</h3>
+<div class="price">45 ريال</div>
+<button class="btn" onclick="orderProduct('اظافر C - 45 ريال')">اطلب الآن</button>
+</div>
+</div>
 
 </section>
 
-<!-- ===== صفحة الدفع ===== -->
 <div class="checkout" id="checkout">
-  <h2>إتمام الطلب</h2>
+<h2>إتمام الطلب</h2>
 
-  <input type="text" id="city" placeholder="المدينة">
-  <input type="tel" placeholder="رقم الجوال">
-  <input type="text" placeholder="الموقع بالتفصيل">
+<input type="text" id="selectedProduct" readonly>
 
-  <p class="note">الدفع عند الاستلام — متاح داخل الرياض فقط</p>
+<input type="text" id="city" placeholder="المدينة">
+<input type="tel" id="phone" placeholder="رقم الجوال">
+<input type="text" id="location" placeholder="الموقع بالتفصيل">
 
-  <button onclick="validateCity()">تأكيد الطلب</button>
+<p class="note">الدفع عند الاستلام — متاح داخل الرياض فقط</p>
 
-  <div class="success" id="successMsg">
-    ✅ تم تأكيد طلبك بنجاح — سيتم التواصل معك قريباً
-  </div>
+<button class="btn" onclick="submitOrder()">تأكيد الطلب</button>
+<button class="btn whatsapp" onclick="sendWhatsApp()">إرسال عبر واتساب</button>
 
-  <p id="errorMsg" class="error"></p>
+<div class="success" id="successMsg">
+✅ تم تأكيد طلبك بنجاح — سيتم التواصل معك قريباً
+</div>
+
+<div class="error" id="errorMsg"></div>
 </div>
 
 <script>
-function showCheckout(){
-  document.getElementById("products").style.display="none";
-  document.getElementById("checkout").style.display="block";
-  window.scrollTo(0,0);
+let productName="";
+
+function orderProduct(name){
+productName=name;
+document.getElementById("selectedProduct").value=name;
+document.getElementById("products").style.display="none";
+document.getElementById("checkout").style.display="block";
+window.scrollTo(0,0);
 }
 
-function validateCity(){
-  const city=document.getElementById("city").value.trim().toLowerCase();
-  const success=document.getElementById("successMsg");
-  const error=document.getElementById("errorMsg");
+function submitOrder(){
+let city=document.getElementById("city").value.trim().toLowerCase();
+let success=document.getElementById("successMsg");
+let error=document.getElementById("errorMsg");
 
-  success.style.display="none";
-  error.innerText="";
+success.style.display="none";
+error.innerText="";
 
-  if(city!=="الرياض" && city!=="riyadh"){
-    error.innerText="❌ الخدمة متاحة داخل الرياض فقط";
-  }else{
-    success.style.display="block";
-  }
+if(city!=="الرياض" && city!=="riyadh"){
+error.innerText="الخدمة متاحة داخل الرياض فقط";
+}else{
+success.style.display="block";
+}
+}
+
+function sendWhatsApp(){
+let phone=document.getElementById("phone").value;
+let city=document.getElementById("city").value;
+let location=document.getElementById("location").value;
+
+let message=`طلب جديد:
+${productName}
+المدينة: ${city}
+الجوال: ${phone}
+الموقع: ${location}`;
+
+window.open(`https://wa.me/966XXXXXXXXX?text=${encodeURIComponent(message)}`);
 }
 </script>
 
