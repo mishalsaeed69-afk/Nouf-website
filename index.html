@@ -9,8 +9,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Cairo',sans-serif;scroll-behavior:smooth;}
-
-body{background:#ffe3ef;color:#333;transition:.3s}
+body{background:#ffe3ef;color:#333;}
 
 /* ===== Header ===== */
 header{
@@ -23,12 +22,7 @@ top:0;
 z-index:100;
 }
 
-.logo{
-font-size:28px;
-font-weight:700;
-color:#444;
-}
-
+.logo{font-size:28px;font-weight:700;color:#444;}
 .logo span{color:#e91e63;}
 
 .lang-btn{
@@ -44,10 +38,15 @@ cursor:pointer;
 font-size:13px;
 }
 
-/* ===== Hero ===== */
+/* ===== Hero (أظافر متناثرة) ===== */
 .hero{
 height:360px;
-background:url('https://images.unsplash.com/photo-1632345031435-8727f6897d53') center/cover;
+background:
+radial-gradient(circle at 20% 30%, rgba(255,255,255,.4) 0 6px, transparent 7px),
+radial-gradient(circle at 60% 70%, rgba(255,255,255,.4) 0 6px, transparent 7px),
+radial-gradient(circle at 80% 40%, rgba(255,255,255,.4) 0 6px, transparent 7px),
+url('https://images.unsplash.com/photo-1596462502278-27bfdc403348') center/cover;
+background-blend-mode:overlay,overlay,overlay,normal;
 }
 
 /* ===== Products ===== */
@@ -78,23 +77,10 @@ object-fit:cover;
 
 .card-body{padding:18px;text-align:center;}
 
-.desc{
-font-size:13px;
-color:#777;
-margin:6px 0 10px;
-}
+.desc{font-size:13px;color:#777;margin:6px 0 10px;}
+.price{color:#e91e63;font-weight:700;margin-bottom:10px;}
 
-.price{
-color:#e91e63;
-font-weight:700;
-margin-bottom:10px;
-}
-
-.qty{
-width:80px;
-padding:6px;
-margin-bottom:10px;
-}
+.qty{width:80px;padding:6px;margin-bottom:10px;}
 
 .btn{
 background:#444;
@@ -130,13 +116,7 @@ border:1px solid #ddd;
 border-radius:10px;
 }
 
-.note{
-font-size:13px;
-color:#666;
-margin:10px 0;
-text-align:center;
-}
-
+.note{font-size:13px;color:#666;margin:10px 0;text-align:center;}
 .invoice{
 display:none;
 background:#f7f7f7;
@@ -145,7 +125,6 @@ border-radius:12px;
 margin-top:15px;
 font-size:14px;
 }
-
 .error{color:red;text-align:center;margin-top:8px;}
 </style>
 </head>
@@ -161,9 +140,9 @@ font-size:14px;
 
 <section class="products" id="products">
 
-<!-- المنتج A -->
+<!-- A -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371">
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9">
 <div class="card-body">
 <h3 class="t-nameA">اظافر A</h3>
 <div class="desc t-desc">ناعم • قوي • عصري • سعر منافس</div>
@@ -177,9 +156,9 @@ font-size:14px;
 </div>
 </div>
 
-<!-- المنتج B -->
+<!-- B -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66">
+<img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4">
 <div class="card-body">
 <h3 class="t-nameB">اظافر B</h3>
 <div class="desc t-desc">ناعم • قوي • عصري • سعر منافس</div>
@@ -193,9 +172,9 @@ font-size:14px;
 </div>
 </div>
 
-<!-- المنتج C -->
+<!-- C -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc">
+<img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01">
 <div class="card-body">
 <h3 class="t-nameC">اظافر C</h3>
 <div class="desc t-desc">ناعم • قوي • عصري • سعر منافس</div>
@@ -225,7 +204,6 @@ font-size:14px;
 <button class="btn" onclick="submitOrder()" id="t-confirm">تأكيد الطلب</button>
 
 <div class="error" id="errorMsg"></div>
-
 <div class="invoice" id="invoice"></div>
 </div>
 
@@ -235,34 +213,13 @@ let orderData={};
 
 function toggleLang(){
 currentLang=currentLang==="ar"?"en":"ar";
-document.documentElement.lang=currentLang;
 document.documentElement.dir=currentLang==="ar"?"rtl":"ltr";
-
 document.querySelector(".lang-btn").innerText=currentLang==="ar"?"EN":"AR";
-
-if(currentLang==="en"){
-document.querySelectorAll(".t-desc").forEach(e=>e.innerText="Soft • Strong • Modern • Competitive price");
-document.querySelector(".t-nameA").innerText="Nails A";
-document.querySelector(".t-nameB").innerText="Nails B";
-document.querySelector(".t-nameC").innerText="Nails C";
-document.getElementById("t-checkout").innerText="Checkout";
-document.getElementById("t-note").innerText="Cash on delivery — Riyadh only";
-document.getElementById("t-confirm").innerText="Confirm Order";
-}else{
-document.querySelectorAll(".t-desc").forEach(e=>e.innerText="ناعم • قوي • عصري • سعر منافس");
-document.querySelector(".t-nameA").innerText="اظافر A";
-document.querySelector(".t-nameB").innerText="اظافر B";
-document.querySelector(".t-nameC").innerText="اظافر C";
-document.getElementById("t-checkout").innerText="إتمام الطلب";
-document.getElementById("t-note").innerText="الدفع عند الاستلام — داخل الرياض فقط";
-document.getElementById("t-confirm").innerText="تأكيد الطلب";
-}
 }
 
 function orderProduct(name,price,qtyId){
 let qty=document.getElementById(qtyId).value;
 orderData={name,price,qty,total:price*qty};
-
 document.getElementById("selectedProduct").value=`${name} × ${qty}`;
 document.getElementById("products").style.display="none";
 document.getElementById("checkout").style.display="block";
