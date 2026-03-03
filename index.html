@@ -12,26 +12,27 @@ body{
   background:#ffd6e7;
 }
 
-/* اللوقو */
+/* ===== اللوقو ===== */
 .header{
   text-align:center;
   padding:20px;
 }
 
 .logo{
-  font-size:32px;
+  font-size:34px;
   font-weight:bold;
   color:#555;
-  background:pink;
+  background:#ffc0cb;
   display:inline-block;
-  padding:10px 25px;
-  border-radius:20px;
+  padding:12px 30px;
+  border-radius:25px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
 }
 
-/* الهيرو */
+/* ===== الهيرو ===== */
 .hero{
-  height:300px;
-  background:url('https://images.unsplash.com/photo-1519014816548-bf5fe059798b') center/cover;
+  height:320px;
+  background:url('https://images.unsplash.com/photo-1632345031435-8727f6897d53') center/cover;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -40,11 +41,12 @@ body{
 
 .hero h1{
   background:rgba(0,0,0,.35);
-  padding:15px 25px;
-  border-radius:12px;
+  padding:16px 28px;
+  border-radius:14px;
+  font-size:28px;
 }
 
-/* المنتجات */
+/* ===== المنتجات ===== */
 .products{
   display:flex;
   justify-content:center;
@@ -55,45 +57,78 @@ body{
 
 .card{
   background:white;
-  width:220px;
+  width:230px;
   padding:15px;
-  border-radius:15px;
+  border-radius:18px;
   text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,.08);
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
 }
 
 .card img{
   width:100%;
-  border-radius:10px;
+  border-radius:12px;
 }
 
 button{
   background:#555;
   color:white;
   border:none;
-  padding:10px 20px;
-  border-radius:10px;
+  padding:11px 22px;
+  border-radius:12px;
   cursor:pointer;
+  font-size:15px;
 }
 
-/* صفحة الدفع */
+/* ===== صفحة الدفع ===== */
 .checkout{
   display:none;
   background:white;
-  width:320px;
-  margin:40px auto;
-  padding:25px;
-  border-radius:15px;
+  width:340px;
+  margin:50px auto;
+  padding:30px 25px;
+  border-radius:20px;
   text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+.checkout h2{
+  margin-bottom:15px;
+  color:#333;
 }
 
 .checkout input{
-  width:90%;
-  padding:10px;
+  width:92%;
+  padding:12px;
   margin:8px 0;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:14px;
 }
 
 .note{
-  color:#555;
+  color:#666;
+  font-size:13px;
+  margin:10px 0 15px;
+}
+
+.success{
+  background:#e8ffe8;
+  color:#1b7a1b;
+  padding:10px;
+  border-radius:10px;
+  margin-top:12px;
+  display:none;
+  font-weight:bold;
+}
+
+.error{
+  color:red;
+  margin-top:10px;
   font-size:14px;
 }
 </style>
@@ -134,19 +169,23 @@ button{
 
 </section>
 
-<!-- صفحة الدفع -->
+<!-- ===== صفحة الدفع ===== -->
 <div class="checkout" id="checkout">
   <h2>إتمام الطلب</h2>
 
   <input type="text" id="city" placeholder="المدينة">
-  <input type="text" placeholder="رقم الجوال">
+  <input type="tel" placeholder="رقم الجوال">
   <input type="text" placeholder="الموقع بالتفصيل">
 
-  <p class="note">الدفع عند الاستلام — داخل الرياض فقط</p>
+  <p class="note">الدفع عند الاستلام — متاح داخل الرياض فقط</p>
 
   <button onclick="validateCity()">تأكيد الطلب</button>
 
-  <p id="msg"></p>
+  <div class="success" id="successMsg">
+    ✅ تم تأكيد طلبك بنجاح — سيتم التواصل معك قريباً
+  </div>
+
+  <p id="errorMsg" class="error"></p>
 </div>
 
 <script>
@@ -158,14 +197,16 @@ function showCheckout(){
 
 function validateCity(){
   const city=document.getElementById("city").value.trim().toLowerCase();
-  const msg=document.getElementById("msg");
+  const success=document.getElementById("successMsg");
+  const error=document.getElementById("errorMsg");
+
+  success.style.display="none";
+  error.innerText="";
 
   if(city!=="الرياض" && city!=="riyadh"){
-    msg.style.color="red";
-    msg.innerText="الخدمة داخل الرياض فقط";
+    error.innerText="❌ الخدمة متاحة داخل الرياض فقط";
   }else{
-    msg.style.color="green";
-    msg.innerText="تم استلام طلبك بنجاح ✅";
+    success.style.display="block";
   }
 }
 </script>
